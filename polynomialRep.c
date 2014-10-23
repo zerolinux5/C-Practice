@@ -8,7 +8,7 @@ typedef struct element{
 
 void printElement(ELEMENT e1)
 {
-	printf("%dx^%d", e1.value, e1.exponent);
+	printf("%dx^%d\n", e1.value, e1.exponent);
 }
 
 int main(void)
