@@ -1,7 +1,6 @@
 #include "stdio.h"
 
 typedef struct element{
-
 	int value;
 	int exponent;
 } ELEMENT;

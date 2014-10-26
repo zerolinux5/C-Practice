@@ -1,10 +1,10 @@
-all: polynomialRep
+all: listTest
 
-polynomialRep: polynomialRep.o
-	gcc -o polynomialRep polynomialRep.o
+listTest: listTest.o
+	gcc -o listTest list.o listTest.o
 
-polynomialRep.o: polynomialRep.c
-	gcc -c polynomialRep.c
+listTest.o: listTest.c
+	gcc -c list.h list.c listTest.c
 
 clean:
-	rm *.o polynomialRep
+	rm *.o *.gch listTest
