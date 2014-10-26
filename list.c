@@ -1,35 +1,23 @@
-#include <stdlib.h>
-#include <string.h>
-
 #include "list.h"
 
-void list_init(List *list, void (*destroy)(void *data)) {
+int list_init(List *list) {
+	printf("Initializing..\n");
+	list = (List *)malloc(sizeof(List));
 	list->size = 0;
-	list->destroy = destroy;
 	list->head = NULL;
 	list->tail = NULL;
+	printf("Hello\n");
 
 	return 0;
 }
 
-void list_destroy(List *list) {
-	void *data;
-	while(list_size(list) > 0) {
-		if (list_remove(list, NULL, (void **)&data) == 0 && list->destroy != NULL) {
-			list->destroy(data);
-		}
-	}
-	memset(list, 0, sizeof(List));
-
-	return 0;
-}
-
-int list_insert(List *list, Node *node, const void *data){
+int list_insert(List *list, Node *node, int data){
+	printf("Inserting:%d\n",data);
 	Node *new_node;
 	if ((new_node = (Node *)malloc(sizeof(Node))) == NULL){
 		return -1;
 	}
-	new_node->data = (void *)data;
+	new_node->data = data;
 	if (node == NULL) {
 		if (list_size(list) == 0)
 			list->tail = new_node;
@@ -46,12 +34,11 @@ int list_insert(List *list, Node *node, const void *data){
 	return 0;
 }
 
-int list_remove(list *list, Node *node, void **data){
+int list_remove(List *list, Node *node){
 	Node *old_node;
 	if(list_size(list) == 0)
 		return -1;
 	if (node == NULL){
-		*data = list->head->data;
 		old_node = list->head;
 		list->head = list->head->next;
 		if(list_size(list) == 1)
@@ -59,7 +46,6 @@ int list_remove(list *list, Node *node, void **data){
 	} else {
 		if (node->next == NULL)
 			return -1;
-		*data = node->next->data;
 		old_node = node->next;
 		node->next = node->next->next;
 		if(node->next == NULL)
@@ -69,4 +55,21 @@ int list_remove(list *list, Node *node, void **data){
 	list->size--;
 		
 	return 0;
+}
+
+int list_destroy(List *list){
+	while(list_size(list) > 0){
+		list_remove(list, NULL);
+	}
+	return 0;
+}
+
+void list_print(List *list){
+	Node *iterator;
+	iterator = list_head(list);
+	while(iterator != list_tail(list)){
+		printf("Data:%d ", list_data(iterator));
+		iterator=list_next(iterator);
+	}
+	printf("Data:%d",list_data(iterator));
 }
