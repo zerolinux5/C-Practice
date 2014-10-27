@@ -5,9 +5,21 @@ typedef struct element{
 	int exponent;
 } ELEMENT;
 
+typedef struct function{
+	int terms;
+	ELEMENT* elementArray;
+} FUNCTION;
+
 void printElement(ELEMENT e1)
 {
 	printf("%dx^%d\n", e1.value, e1.exponent);
+}
+
+void printFunction(FUNCTION f1)
+{
+	for(int i = 0; i < f1.terms;i++){
+		printElement(f1.elementArray[i]);
+	}
 }
 
 int main(void)
