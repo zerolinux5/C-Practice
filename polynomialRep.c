@@ -19,15 +19,19 @@ void printFunction(FUNCTION f1)
 {
 	for(int i = 0; i < f1.terms;i++){
 		printElement(f1.elementArray[i]);
+		(i == (f1.terms -1)) ? printf("") : printf(" + ");
 	}
 }
 
 int main(void)
 {
-	ELEMENT e1;
-	e1.value = 5;
-	e1.exponent = 3;
+	int size = 2;
+	ELEMENT elementArray[size];
+	for(int i = 0; i < size; i++){
+		elementArray[i].value = 3;
+		elementArray[i].exponent = 4;
+		printElement(elementArray[i]);
+	}	
 
-	printElement(e1);
 	return 0;
 }
