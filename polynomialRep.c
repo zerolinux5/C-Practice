@@ -23,18 +23,40 @@ ELEMENT* initElement(int inValue, int inExponent){
 void deleteElement(ELEMENT* e1){
 	e1->value = 0;
 	e1->exponent = 0;
+	e1 = NULL;
 	free(e1);
 }
 
-void printElement(ELEMENT e1)
+FUNCTION* initFunction(int size, ELEMENT** terms)
 {
-	printf("%dx^%d\n", e1.value, e1.exponent);
+	FUNCTION* f1 = malloc(sizeof(FUNCTION*));
+	assert(f1 != NULL);
+	f1->terms = size;
+	f1->elementArray = terms;
+	return f1;
+}
+
+void deleteFunction(FUNCTION* f1)
+{	
+	for(int i = 0; i < f1->terms; i++){
+		if (f1->elementArray[i] != NULL) 
+			deleteElement(f1->elementArray[i]);	
+	}
+	f1->terms = 0;
+	free(f1);
+}
+
+void printElement(ELEMENT e1, int newline)
+{
+	printf("%dx^%d", e1.value, e1.exponent);
+	if(newline)
+		printf("\n");
 }
 
 void printFunction(FUNCTION f1)
 {
 	for(int i = 0; i < f1.terms;i++){
-		printElement(*f1.elementArray[i]);
+		printElement(*f1.elementArray[i], 0);
 		(i == (f1.terms -1)) ? printf("") : printf(" + ");
 	}
 }
@@ -45,9 +67,11 @@ int main(void)
 	ELEMENT* elementArray[size];
 	for(int i = 0; i < size; i++){
 		elementArray[i] = initElement(3, 5);
-		printElement(*elementArray[i]);
-		deleteElement(elementArray[i]);
+		printElement(*elementArray[i], 1);
+		//deleteElement(elementArray[i]);
 	}	
-
+	FUNCTION* function = initFunction(2, elementArray);
+	printFunction(*function);
+	deleteFunction(function);
 	return 0;
 }
