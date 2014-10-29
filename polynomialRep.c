@@ -29,6 +29,13 @@ void derive(ELEMENT* e1)
 		e1->exponent--;
 }
 
+void deriveFunction(FUNCTION* f1)
+{
+	for(int i = 0; i < f1->terms;i++){
+		derive(f1->elementArray[i]);
+	}
+}
+
 void deleteElement(ELEMENT* e1){
 	e1->value = 0;
 	e1->exponent = 0;
@@ -57,7 +64,11 @@ void deleteFunction(FUNCTION* f1)
 
 void printElement(ELEMENT e1, int newline)
 {
-	printf("%dx^%d", e1.value, e1.exponent);
+	if(e1.exponent == 0){
+		printf("0");
+	} else {
+		printf("%dx^%d", e1.value, e1.exponent);
+	}
 	if(newline)
 		printf("\n");
 }
@@ -88,6 +99,8 @@ int main(void)
 	for(int i = 0; i < size;i++){
 		derive(elementArray[i]);
 	}
+	printFunction(*function);
+	deriveFunction(function);
 	printFunction(*function);
 	deleteFunction(function);
 	return 0;
