@@ -47,6 +47,13 @@ void deriveFunction(FUNCTION* f1)
 	}
 }
 
+void integrateFunction(FUNCTION* f1)
+{
+	for(int i = 0; i < f1->terms;i++){
+		integrate(f1->elementArray[i]);
+	}
+}
+
 void deleteElement(ELEMENT* e1)
 {
 	e1->value = 0;
@@ -113,11 +120,9 @@ int main(void)
 	printf("\n");
 	FUNCTION* function = initFunction(2, elementArray);
 	printFunction(*function);
-	for(int i = 0; i < size;i++){
-		derive(elementArray[i]);
-	}
-	printFunction(*function);
 	deriveFunction(function);
+	printFunction(*function);
+	integrateFunction(function);
 	printFunction(*function);
 	deleteFunction(function);
 	return 0;
