@@ -20,6 +20,14 @@ ELEMENT* initElement(int inValue, int inExponent){
 	return e1;
 }
 
+void derive(ELEMENT* e1)
+{
+	int power = e1->exponent;
+	e1->value *= power;
+	if(power != 0)
+		e1->exponent--;
+}
+
 void deleteElement(ELEMENT* e1){
 	e1->value = 0;
 	e1->exponent = 0;
@@ -59,6 +67,7 @@ void printFunction(FUNCTION f1)
 		printElement(*f1.elementArray[i], 0);
 		(i == (f1.terms -1)) ? printf("") : printf(" + ");
 	}
+	printf("\n");
 }
 
 int main(void)
@@ -71,6 +80,10 @@ int main(void)
 		//deleteElement(elementArray[i]);
 	}	
 	FUNCTION* function = initFunction(2, elementArray);
+	printFunction(*function);
+	for(int i = 0; i < size;i++){
+		derive(elementArray[i]);
+	}
 	printFunction(*function);
 	deleteFunction(function);
 	return 0;
