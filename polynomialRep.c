@@ -13,7 +13,8 @@ typedef struct function{
 	ELEMENT** elementArray;
 } FUNCTION;
 
-ELEMENT* initElement(int inValue, int inExponent){
+ELEMENT* initElement(int inValue, int inExponent)
+{
 	ELEMENT* e1 = malloc(sizeof(ELEMENT*));
 	assert(e1 != NULL);
 	e1->value = inValue;
@@ -29,6 +30,16 @@ void derive(ELEMENT* e1)
 		e1->exponent--;
 }
 
+void integrate(ELEMENT* e1)
+{
+	if(e1->exponent == 0) {
+		return;
+	} else {
+		e1->exponent++;
+		e1->value /= e1->exponent;
+	}
+}
+
 void deriveFunction(FUNCTION* f1)
 {
 	for(int i = 0; i < f1->terms;i++){
@@ -36,7 +47,8 @@ void deriveFunction(FUNCTION* f1)
 	}
 }
 
-void deleteElement(ELEMENT* e1){
+void deleteElement(ELEMENT* e1)
+{
 	e1->value = 0;
 	e1->exponent = 0;
 	e1 = NULL;
@@ -92,8 +104,13 @@ int main(void)
 		int r2 = rand() % 10 + 1;
 		elementArray[i] = initElement(r1, r2);
 		printElement(*elementArray[i], 1);
+		derive(elementArray[i]);
+		printElement(*elementArray[i], 1);
+		integrate(elementArray[i]);
+		printElement(*elementArray[i], 1);	
 		//deleteElement(elementArray[i]);
 	}	
+	printf("\n");
 	FUNCTION* function = initFunction(2, elementArray);
 	printFunction(*function);
 	for(int i = 0; i < size;i++){
