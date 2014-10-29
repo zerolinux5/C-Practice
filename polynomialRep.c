@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "assert.h"
+#include "time.h"
 
 typedef struct element{
 	int value;
@@ -72,10 +73,13 @@ void printFunction(FUNCTION f1)
 
 int main(void)
 {
+	srand(time(NULL));
 	int size = 2;
 	ELEMENT* elementArray[size];
 	for(int i = 0; i < size; i++){
-		elementArray[i] = initElement(3, 5);
+		int r1 = rand() % 10 + 1;
+		int r2 = rand() % 10 + 1;
+		elementArray[i] = initElement(r1, r2);
 		printElement(*elementArray[i], 1);
 		//deleteElement(elementArray[i]);
 	}	
