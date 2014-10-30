@@ -2,16 +2,7 @@
 #include "stdlib.h"
 #include "assert.h"
 #include "time.h"
-
-typedef struct element{
-	int value;
-	int exponent;
-} ELEMENT;
-
-typedef struct function{
-	int terms;
-	ELEMENT** elementArray;
-} FUNCTION;
+#include "polynomialRep.h"
 
 ELEMENT* initElement(int inValue, int inExponent)
 {
