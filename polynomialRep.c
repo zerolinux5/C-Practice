@@ -33,14 +33,16 @@ void integrate(ELEMENT* e1)
 
 void deriveFunction(FUNCTION* f1)
 {
-	for(int i = 0; i < f1->terms;i++){
+	int i = 0;
+	for(; i < f1->terms;i++){
 		derive(f1->elementArray[i]);
 	}
 }
 
 void integrateFunction(FUNCTION* f1)
 {
-	for(int i = 0; i < f1->terms;i++){
+	int i = 0;
+	for(; i < f1->terms;i++){
 		integrate(f1->elementArray[i]);
 	}
 }
@@ -64,7 +66,8 @@ FUNCTION* initFunction(int size, ELEMENT** terms)
 
 void deleteFunction(FUNCTION* f1)
 {	
-	for(int i = 0; i < f1->terms; i++){
+	int i = 0;
+	for(; i < f1->terms; i++){
 		if (f1->elementArray[i] != NULL) 
 			deleteElement(f1->elementArray[i]);	
 	}
@@ -85,7 +88,8 @@ void printElement(ELEMENT e1, int newline)
 
 void printFunction(FUNCTION f1)
 {
-	for(int i = 0; i < f1.terms;i++){
+	int i = 0;
+	for(; i < f1.terms;i++){
 		printElement(*f1.elementArray[i], 0);
 		(i == (f1.terms -1)) ? printf("") : printf(" + ");
 	}
