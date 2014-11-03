@@ -34,6 +34,7 @@ int main(void)
 	printFunction(*function);
 	integrateFunction(function);
 	printFunction(*function);
+	printf("BoundedIntegration value:%d from A:%d to B:%d\n", boundedIntegration(function, 5, 0), 0, 5);
 	deleteFunction(function);
 	return 0;
 }
