@@ -5,6 +5,9 @@
 #include "polynomialRep.h"
 #include "math.h"
 
+#define value(f1) (f1->elementArray[i]->value)
+#define exponent(f1) (f1->elementArray[i]->exponent)
+
 ELEMENT* initElement(int inValue, int inExponent)
 {
 	ELEMENT* e1 = malloc(sizeof(ELEMENT*));
