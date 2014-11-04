@@ -55,13 +55,13 @@ int boundedIntegration(FUNCTION* f1, int a, int b){
 	int i = 0;
 	int result = 0;
 	for(;i < f1->terms;i++){
-		int term = pow(b, f1->elementArray[i]->exponent);
-		term *= f1->elementArray[i]->value;
+		int term = pow(b, exponent(f1));
+		term *= value(f1);
 		result += term;
 	}
 	for(i = 0;i < f1->terms;i++){
-		int term = pow(a, f1->elementArray[i]->exponent);
-		term *= f1->elementArray[i]->value;
+		int term = pow(a, exponent(f1));
+		term *= value(f1);
 		result -= term;
 	}
 	return result;
