@@ -23,6 +23,18 @@ int solve(ELEMENT* e1, int inputX)
 	return solution;
 }
 
+int solveEquation(FUNCTION *f1, int inputX)
+{
+	int i = 0;
+	int total = 0;
+
+	for(;i < f1->terms;i++){
+		total += solve(f1->elementArray[i], inputX);		
+	}
+
+	return total;
+}
+
 void derive(ELEMENT* e1)
 {
 	int power = e1->exponent;
