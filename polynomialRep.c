@@ -17,6 +17,12 @@ ELEMENT* initElement(int inValue, int inExponent)
 	return e1;
 }
 
+int solve(ELEMENT* e1, int inputX)
+{
+	int solution = e1->value * pow(inputX, e1->exponent);
+	return solution;
+}
+
 void derive(ELEMENT* e1)
 {
 	int power = e1->exponent;

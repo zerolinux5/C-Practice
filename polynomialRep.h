@@ -15,6 +15,9 @@ typedef struct function{
 */
 ELEMENT* initElement(int inValue, int inExponent);
 
+//Input value for x and solve polynomial expression
+int solve(ELEMENT *e1, int inputX);
+
 //Use the power rule on the given element
 void derive(ELEMENT* e1);
 
