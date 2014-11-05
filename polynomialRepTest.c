@@ -37,6 +37,7 @@ int main(void)
 	integrateFunction(function);
 	printFunction(*function);
 	printf("BoundedIntegration value:%d from A:%d to B:%d\n", boundedIntegration(function, 5, 0), 0, 5);
+	printf("Solved for x = 5 :%d\n", solveFunction(function, 5));
 	deleteFunction(function);
 	return 0;
 }

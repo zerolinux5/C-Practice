@@ -23,7 +23,7 @@ int solve(ELEMENT* e1, int inputX)
 	return solution;
 }
 
-int solveEquation(FUNCTION *f1, int inputX)
+int solveFunction(FUNCTION *f1, int inputX)
 {
 	int i = 0;
 	int total = 0;
