@@ -4,15 +4,16 @@
 #include "time.h"
 #include "polynomialRep.h"
 
+const int size = 6;
+
 int main(void)
 {
 	srand(time(NULL));
-	int size = 4;
 	ELEMENT* elementArray[size];
 	for(int i = 0; i < size; i++){
 		int r1;
 		int r2;
-		if(i < 2){
+		if(i < size/2){
 			r1 = rand() % 10 + 1;
 			r2 = rand() % 10 + 1;
 		} else {
