@@ -10,7 +10,8 @@ int main(void)
 {
 	srand(time(NULL));
 	ELEMENT* elementArray[size];
-	for(int i = 0; i < size; i++){
+	int i = 0;
+	for(; i < size; i++){
 		int r1;
 		int r2;
 		if(i < size/2){
